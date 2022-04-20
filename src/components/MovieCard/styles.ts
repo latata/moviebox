@@ -64,3 +64,16 @@ export const Favorite = styled.div`
     color: var(--warning);
   }
 `;
+
+export const Type = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--black-65);
+  backdrop-filter: blur(80px);
+  color: var(--white);
+  height: 4rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+`

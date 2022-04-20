@@ -25,13 +25,14 @@ export default function Favorites() {
 
       <S.Main>
         <S.MovieList>
-          {movies.map(({ id, original_title, poster_path }) => {
+          {movies.map(({ id, name, poster_path, type }) => {
             return (
               <li key={id}>
                 <MovieCard
                   id={id}
-                  original_title={original_title}
+                  name={name}
                   poster_path={poster_path}
+                  type={type}
                 />
               </li>
             );

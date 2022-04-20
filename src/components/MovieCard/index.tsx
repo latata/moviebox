@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/useStore";
 
-import { MovieType } from "../../common/types";
+import {MovieCardData} from "../../common/types";
 
 import {
   addFavorite,
@@ -12,10 +12,6 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
 import * as S from "./styles";
 
-export type MovieCardData = Omit<
-  MovieType,
-  "overview" | "vote_average" | "release_date" | "runtime" | "genres"
->;
 
 export default function MovieCard(movieData: MovieCardData) {
   const { movies } = useAppSelector((state) => state.favorites);
@@ -46,13 +42,16 @@ export default function MovieCard(movieData: MovieCardData) {
           <AiOutlineStar size={24} onClick={toggleFavorite} />
         )}
       </S.Favorite>
+        <S.Type>
+        {movieData.type === 'tvshow' ? 'TV Show' : 'Movie'}
+        </S.Type>
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
-        alt={movieData.original_title}
+        alt={movieData.name}
       />
       <div>
         <S.Link to={`/movie/${movieData.id}`}>
-          {movieData.original_title}
+          {movieData.name}
         </S.Link>
       </div>
     </S.Container>

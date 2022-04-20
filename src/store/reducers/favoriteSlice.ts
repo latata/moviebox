@@ -1,14 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { MovieType } from "../../common/types";
-
-type Movie = Omit<
-  MovieType,
-  "overview" | "vote_average" | "release_date" | "runtime" | "genres"
->;
+import {MovieCardData} from "../../common/types";
 
 interface FavoriteState {
-  movies: Movie[];
+  movies: MovieCardData[];
 }
 
 const initialState: FavoriteState = {
@@ -17,7 +12,7 @@ const initialState: FavoriteState = {
 
 const addFavoriteMovie = (
   state: FavoriteState,
-  action: PayloadAction<Movie>
+  action: PayloadAction<MovieCardData>
 ) => {
   const existingMovie = state.movies.find(
     (movie) => movie.id === action.payload.id
